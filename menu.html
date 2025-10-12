@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Пицца</h1>
+
+<div class="plates">
+    {% for n in pizzalist%}
+    {% if 1 <= n[4] <= 12 %}
+    <div class="card">
+        <form action="" method="POST">
+            <input type='hidden' name='prodName' value="{{n[0]}}"/>
+            <input type='hidden' name='prodPrice' value="{{n[2]}}"/>
+            <input type='hidden' name='prodPic' value="{{n[3]}}"/>
+            <img src=static/{{n[3]}} width=250px alt={{n[0]}}>
+            <h2>{{n[0]}}</h2>
+            <p class="price"> {{n[2]}} руб.</p>
+            <p> {{n[1]}} </p>
+            <p>
+                <button type='submit'>Заказать</button>
+            </p>
+        </form>
+    </div>
+
+    {% endif %}
+    {% endfor %}
+</div>
+
+<h1>Кесадилья</h1>
+<div class="plates">
+    {% for n in pizzalist%}
+{% if 13 <= n[4] <= 14 %}
+    <div class="card">
+        <form action="" method="POST">
+        <input type='hidden' name='prodName' value="{{n[0]}}"/>
+        <input type='hidden' name='prodPrice' value="{{n[2]}}"/>
+        <input type='hidden' name='prodPic' value="{{n[3]}}"/>
+        <img src=static/{{n[3]}} width=250px alt={{n[0]}}>
+        <h2>{{n[0]}}</h2>
+        <p class="price"> {{n[2]}} руб.</p>
+        <p> {{n[1]}} </p>
+        <p>
+            <button type='submit'>Заказать</button>
+        </p>
+        </form>
+    </div>
+   {% endif %}
+    {% endfor %}
+</div>
+
+<h1>Напитки</h1>
+<div class="plates">
+    {% for n in pizzalist%}
+{% if 15 <= n[4] <= 22 %}
+    <div class="card">
+        <form action="/menu" method="POST">
+            <h2>{{n[0]}}</h2>
+            <p class="price"> {{n[2]}}руб.</p>
+            <input type='hidden' name='prodName' value="{{n[0]}}"/>
+            <input type='hidden' name='prodPrice' value="{{n[2]}}"/>
+            <input type='hidden' name='prodPic' value=""/>
+            <p>
+                <button type='submit'>Заказать</button>
+            </p>
+        </form>
+    </div>
+{% endif %}
+{% endfor %}
+</div>
+{% endblock %}

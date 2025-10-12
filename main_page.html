@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="item2">
+    <h2>Добро пожаловать на наш сайт! Мы - пиццерия Panificio. Готовим самую вкусную и тонкую пиццу с 2015 года.</h2>
+    <h3>Здесь вы можете познакомиться с пиццами, а также заказать те, которые вам захотелось попробовать.</h3>
+</div>
+
+<div class="item3">
+    <hr>
+    <h1>Хиты продаж</h1>
+    <div class="card">
+        <form action="" method="POST">
+            <input type='hidden' name='prodName' value="Пепперони"/>
+            <input type='hidden' name='prodPrice' value="440"/>
+            <input type='hidden' name='prodPic' value="pepperoni.jpg"/>
+            <img src=static/pepperoni.jpg alt="Пепперони" style="width:100%">
+            <h2>Пепперони</h2>
+            <p class="price">440 руб.</p>
+            <p>_</p>
+            <p>
+                <button type='submit'>Заказать</button>
+            </p>
+        </form>
+    </div>
+
+    <div class="card">
+        <form action="" method="POST">
+            <input type='hidden' name='prodName' value="Сливочно-мясная"/>
+            <input type='hidden' name='prodPrice' value="540"/>
+            <input type='hidden' name='prodPic' value="meatysweety.jpg"/>
+            <img src=static/meatysweety.jpg alt="Сливочно-мясная" style="width:100%">
+            <h2>Сливочно-мясная</h2>
+            <p class="price">540 руб.</p>
+            <p>_</p>
+            <p>
+                <button type='submit'>Заказать</button>
+            </p>
+        </form>
+    </div>
+
+    <div class="card">
+        <form action="" method="POST">
+            <input type='hidden' name='prodName' value="Ветчина и грибы"/>
+            <input type='hidden' name='prodPrice' value="450"/>
+            <input type='hidden' name='prodPic' value="hammushroom.jpg"/>
+            <img src="static/hammushroom.jpg" alt="Ветчина и грибы" style="width:100%">
+            <h2>Ветчина и грибы</h2>
+            <p class="price">450 руб.</p>
+            <p>_</p>
+            <p>
+                <button type='submit'>Заказать</button>
+            </p>
+        </form>
+    </div>
+
+    <div class="menu">
+        <a href="/menu" style="text-decoration:none;">Посмотреть<br>всё меню</a>
+    </div>
+</div>
+
+{% endblock %}

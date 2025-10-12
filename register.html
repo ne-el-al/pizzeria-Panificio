@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content%}
+<form action="/register" method="POST" onsubmit="return validate()">
+    <p>{{error}}</p>
+    <p>Ваше Имя: <input type="text" name="name" required></p>
+    <p>Ваш телефон: <input type="text" name="phone" required></p>
+    <p>Ваш адрес: <input type="text" name="address" required></p>
+    <p>Email: <input type="email" name="email" required></p>
+    <P>Пароль: <input type="password" name="password" id="password" required></p>
+    <p>Подтвердите пароль: <input type="password" name="cpassword" id="cpassword" required></p>
+    <p><input type="submit" value="Зарегистрироваться"></p>
+</form>
+{% endblock %}

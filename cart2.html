@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% if 'email' not in session %}
+<h2><a href="/login">Войдите в систему</a>, чтобы оформить заказ, или <a href="/register">зарегистрируйтесь</a>, если вы
+    с нами впервые.</h2>
+{% else %}
+<h1>Вы заказали: </h1>
+<table>
+    <tr>
+        <th></th>
+        <th>Название</th>
+        <th>Цена</th>
+    </tr>
+    {% for n in orderlist%}
+    <tr>
+        <td><img src=static/{{n[3]}} width=50px alt={{n[3]}}></td>
+        <td>
+            {% if n[1] != 'None' %}
+            {{n[1]}}
+            {% endif %}
+        </td>
+        <td>{{n[2]}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+<button><a id="order" href="/checkout">Оформить заказ</a></button>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+* {
+  font-family: Times-New-Roman;
+}
+
+body {
+  background-color: #EFF0EA;
+}
+
+/* Стиль заголовка*/
+.item1 { grid-area: header;
+  overflow: hidden;
+  background-color: #597525;}
+
+/* Стиль ссылок заголовка */
+.item1 a {
+  float: left;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 4px;
+  width:16,6%;
+}
+
+/* наведение на ссылки */
+.item1 a:hover {
+  background-color: #ECD393;
+  color: white;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.item1 a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Текущая ссылка*/
+.item1 a.active {
+  background-color: #ECD393;
+  color: white;
+}
+
+/* Размещение ссылок справа */
+.item1-right {
+  float: right;
+}
+
+/* Трансформация если меньше 600px */
+@media screen and (max-width: 600px) {
+  .item1 a {
+    float: left;
+    display: block;
+    text-align: left;
+  }
+  .item1-right {
+    float: left;
+  }
+}
+.item2 { grid-area: stories; }
+.item3 { grid-area: pizza; }
+.item4 { grid-area: footer;
+background-color: #597525;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'stories'
+    'pizza'
+    'footer';
+  gap: 10px;
+  padding: 10px;
+  align-content: space-evenly;
+}
+
+.grid-container > div {
+  padding: 20px 0;
+}
+
+.plates {
+  margin: 50px;
+}
+.plates:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Карточка с пиццей */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  text-align: center;
+  font-family: arial;
+  margin: 10px auto auto 10px;
+  float: left;
+}
+
+/* Текст с ценой */
+.price {
+  color: grey;
+  font-size: 20px;
+}
+
+/* Кнопка "заказать"*/
+.card button, #logout {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #597525;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card img {
+  width: 100%
+}
+/* Наведение на кнопку "заказать"*/
+.card button:hover {
+  opacity: 0.7;
+}
+
+
+/* Кнопка перехода на страницу меню*/
+.menu a{
+  float: left;
+  background-color: #A5331D;
+  font-size: 25px;
+  margin: 95px 0 0 10px;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 4px;
+  }
+
+.menu a:hover {
+  background-color: #ECD393;
+  color: white;
+}
+
+table, td, th {
+  border: 1px solid;
+}
+td {
+text-align: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+input[type=submit], button, #order {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #A5331D;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+button{margin: 20px auto auto auto;}
+
+
+input[type=text], input[type=password], input[type=email], textarea{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+form {
+font-size: 18px;
+}
+
+a{
+text-decoration: none;
+color: #A5331D;
+}
+
+#logout {
+color: white;
+}
+
+h1 {
+background-color: #A5331D;
+color: white;
+}
+
+.authors{
+color: #A5331D;
+}
+    </style>
+</head>
+<body>
+<div class="grid-container">
+  <div class="item1">
+      <!--Заголовок-->
+      <a href="/main" class="logo"><img src="static/logo.png" width="100px"></a>
+    <div class="header-right" style="float:right;">
+        <a href="/menu">Меню</a>
+        <a href="/discount">Акции</a>
+        <a href="/order">Заказать</a>
+        <a href="/comments">Отзывы</a>
+        <a href="/contacts">Контакты</a>
+        <a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        <a href="/profile"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <div>
+     {% block content %} {%endblock%}
+  </div>
+</div>
+</body>
+</html>

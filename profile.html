@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>{{name}}</h2>
+    <img src="static/Йода.jpg">
+    <h3>Информация о вас</h3>
+    <p>Телефон: {{phone}}</p>
+    <p>Адрес: {{address}}</p>
+    <button><a id="logout" href="/logout">Выйти</a></button>
+</div>
+{% endblock %}
