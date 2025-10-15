@@ -11,7 +11,8 @@
 <body class="grid-container">
     <%- include("./nav.ejs") %>
     <section>
-      <% if (page) include(`${page}`); %>
+
+      <%- include(`${page}`); %>
     </section>
 </body>
 

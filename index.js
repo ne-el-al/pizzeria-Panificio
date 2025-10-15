@@ -1,4 +1,5 @@
 import express from "express";
+
 import morgan from "morgan"
 import { database } from "./db_connection.js";
 
@@ -63,16 +64,17 @@ app.get("/menu/:menuId", (req, res) => {
             return res.status(500).send("Database error");
         }
 
-        if (result.length != 0) {
+        console.log(result.length);
+
+        if (result.length > 1 || result.length <= 0) {
+            res.redirect("/");
+        }
+        else {
             res.render("index.ejs", {
-                food: result[0],
                 page: "menu_card.ejs",
+                food: result[0],
             });
         }
-        else
-            res.render("index.ejs", {
-        page: "",
-            })
 
 
     });
