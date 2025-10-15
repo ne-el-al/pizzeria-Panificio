@@ -106,7 +106,7 @@ background-color: #597525;
 }
 
 /* Кнопка "заказать"*/
-.card button {
+.card button, #logout {
   border: none;
   outline: 0;
   padding: 12px;
@@ -153,6 +153,48 @@ td {
 text-align: center;
 }
 table {
-  width: 75%;
+  width: 100%;
   border-collapse: collapse;
+}
+
+input[type=submit], button, #order {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #A5331D;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+button{margin: 20px auto auto auto;}
+
+
+input[type=text], input[type=password], input[type=email], textarea{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+form {
+font-size: 18px;
+}
+
+a{
+text-decoration: none;
+color: #A5331D;
+}
+
+#logout {
+color: white;
+}
+
+h1 {
+background-color: #A5331D;
+color: white;
+}
+
+.authors{
+color: #A5331D;
 }
