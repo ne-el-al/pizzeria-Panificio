@@ -1,36 +1,105 @@
 import express from "express";
+import morgan from "morgan"
+import { database } from "./db_connection.js";
 
 const app = express();
+
+app.use(express.static('public'));
+// app.use(express.static('images'));
+
+app.use(morgan("tiny"));
+
+app.set("view engine", "ejs")
 const port = 3000;
 
+// installing connection to database
+
+database.connect(function (err) {
+    if (err) return err;
+    console.log("Connected!");
+});
+
 app.get("/", (req, res) => {
-    // redirect to /main
-})
-
-app.get("/main", (req, res) => {
-    // render main_page.html
-})
-
-/* 
-app.post("/main", (req, res) => {
-    // insert order to db (to delete)
-})
-*/
-
-app.get("/contacts", (req, res) => {
-    // render contacts.html
+    res.render("index.ejs",
+        {
+            page: "main.ejs"
+        }
+    );
 })
 
 app.get("/order", (req, res) => {
-    // render order.html
+    res.render("index.ejs",
+        {
+            page: "order.ejs"
+        }
+    )
+})
+
+app.get("/menu", (req, res) => {
+    try {
+        database.execute('SELECT * FROM food', function (error, results, fields) {
+            if (error) throw error;
+            // console.log(results);
+            res.render("index.ejs", {
+                result: results,
+                page: "menu.ejs"
+            }
+            )
+        });
+
+    }
+    catch (error) {
+        console.log(error);
+    }
+})
+
+app.get("/menu/:menuId", (req, res) => {
+    const menuId = req.params.menuId;
+    console.log("menuId:", menuId);
+
+    database.query("SELECT * FROM food WHERE id = ?", [menuId], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Database error");
+        }
+
+        if (result.length != 0) {
+            res.render("index.ejs", {
+                food: result[0],
+                page: "menu_card.ejs",
+            });
+        }
+        else
+            res.render("index.ejs", {
+        page: "",
+            })
+
+
+    });
+});
+
+app.get("/discount", (req, res) => {
+    res.render("index.ejs",
+        {
+            page: "discount.ejs"
+        }
+    )
+})
+
+app.get("/contacts", (req, res) => {
+    res.render("index.ejs",
+        {
+            page: "contacts.ejs"
+        }
+    )
 })
 
 app.get("/comments", (req, res) => {
-    // render comments.html
-})
-
-app.post("/comments", (req, res) => {
-    // publish coment and stay on the same page
+    res.render("index.ejs",
+        {
+            page: "comments.ejs"
+        }
+    )
 })
 
 app.listen(port, () => {
