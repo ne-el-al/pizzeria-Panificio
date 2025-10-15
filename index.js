@@ -1,25 +1,24 @@
 import express from "express";
-// import morgan from "morgan"
+
+import morgan from "morgan"
 import { database } from "./db_connection.js";
 
 const app = express();
 
-database.connect(function (err) {
-    if (err) return err;
-    console.log("Connected!");
-});
-
 app.use(express.static('public'));
 // app.use(express.static('images'));
 
-// app.use(morgan("tiny"));
+app.use(morgan("tiny"));
 
 app.set("view engine", "ejs")
 const port = 3000;
 
 // installing connection to database
 
-
+database.connect(function (err) {
+    if (err) return err;
+    console.log("Connected!");
+});
 
 app.get("/", (req, res) => {
     res.render("index.ejs",
